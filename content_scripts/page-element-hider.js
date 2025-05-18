@@ -74,7 +74,7 @@ function getDefaultSettings() {
     generalSettings: {
       hideType: 'hide',
       showBorder: false,
-      borderColor: '#000000',
+      borderColor: '#ff0000',
       borderStyle: 'solid',
       borderWidth: 1
     },
