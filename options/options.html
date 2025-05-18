@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Element Hider - Options</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Page Element Hider Settings</h1>
+        </header>
+
+        <main>
+            <section class="settings-card">
+                <h2>General Settings</h2>
+
+                <div class="setting-group">
+                    <label for="hideType">Hide Type:
+                        <span class="tooltip-container">
+                            <span class="tooltip-icon"></span>
+                            <div class="tooltip">
+                                <p><strong>Hide Completely</strong>: Completely hides the element from the page layout.
+                                </p>
+                                <p><strong>Hide (Conceal)</strong>: Makes the element invisible but retains its space on
+                                    the page.</p>
+                                <p><strong>Remove</strong>: Permanently removes the element without leaving a trace.</p>
+                            </div>
+                        </span>
+                    </label>
+                    <select id="hideType" class="select-input">
+                        <option value="hide">Hide completely</option>
+                        <option value="conceal">Hide (conceal)</option>
+                        <option value="remove">Remove</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" checked id="showBorder" class="checkbox-input">
+                        <label for="showBorder">Show element border on selection
+                            <span class="tooltip-container">
+                                <span class="tooltip-icon"></span>
+                                <div class="tooltip">
+                                    <p>Displays a border around elements when right-clicked for easy identification.</p>
+                                </div>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="border-settings" id="borderSettings">
+                        <div class="setting-row">
+                            <label for="borderColor">Border Color:</label>
+                            <input type="color" id="borderColor" value="#ff0000">
+                        </div>
+
+                        <div class="setting-row">
+                            <label for="borderStyle">Border Style:</label>
+                            <select id="borderStyle" class="select-input">
+                                <option value="solid">Solid</option>
+                                <option value="dashed">Dashed</option>
+                                <option value="dotted">Dotted</option>
+                                <option value="double">Double</option>
+                            </select>
+                            </div>
+                            
+                            <div class="setting-row">
+                                <label for="borderWidth">Border Width:</label>
+                                <div class="range-container">
+                                    <input type="number" id="borderWidth" min="1" max="10" value="1" class="number-input">
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="settings-card">
+                <h2>Auto-Hide Settings</h2>
+
+                <div class="site-list-container">
+                    <div class="site-list-header">
+                        <span>Sites with auto-hide rules
+                            <span class="tooltip-container">
+                                <span class="tooltip-icon"></span>
+                                <div class="tooltip">
+                                    <p>Configure and save rules to automatically hide elements on specified sites.</p>
+                                </div>
+                            </span>
+                        </span>
+                        <button id="addSiteBtn" class="btn btn-primary">Add Site</button>
+                    </div>
+
+                    <div id="siteList" class="site-list">
+
+                        <div class="empty-state">
+                            <p>No sites configured yet</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="action-buttons">
+                <button id="resetAllBtn" class="btn btn-danger">Reset All Settings</button>
+            </div>
+        </main>
+    </div>
+
+
+    <div id="siteConfigModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Add Site</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="siteUrl">Site URL:</label>
+                    <input type="text" id="siteUrl" placeholder="e.g., example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="siteHideType">Hide Type:</label>
+                    <select id="siteHideType" class="select-input">
+                        <option value="default">Use default</option>
+                        <option value="hide">Hide completely</option>
+                        <option value="conceal">Hide (conceal)</option>
+                        <option value="remove">Remove</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <div class="selector-header">
+                        <label>Selectors:</label>
+                        <button id="addSelectorBtn" class="btn btn-small btn-outline">Add Selector</button>
+                    </div>
+
+                    <div id="selectorsList" class="selectors-list">
+
+                        <div class="empty-selectors">
+                            <p>No selectors added yet</p>
+                        </div>
+                    </div>
+
+                    <div class="selector-actions">
+                        <button id="clearSelectorsBtn" class="btn btn-small btn-outline">Clear All</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelSiteBtn" class="btn btn-secondary">Cancel</button>
+                <button id="saveSiteBtn" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="selectorModal" class="modal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h3 id="selectorModalTitle">Add Selector</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="selectorValue">CSS Selector:</label>
+                    <input type="text" id="selectorValue" placeholder="e.g., #ad-banner, .popup">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelSelectorBtn" class="btn btn-secondary">Cancel</button>
+                <button id="saveSelectorBtn" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmModal" class="modal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h3>Confirm Action</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage">Are you sure you want to perform this action?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelConfirmBtn" class="btn btn-secondary">Cancel</button>
+                <button id="confirmBtn" class="btn btn-danger">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+
+</html>
