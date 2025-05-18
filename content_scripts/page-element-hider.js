@@ -15,7 +15,7 @@ document.addEventListener("contextmenu", async function (event) {
 browser.runtime.onMessage.addListener(async (message) => {
   if (message.action === "hideElement" && targetElement) {
     const settings = await loadSettings();
-    hideElement(targetElement, settings);
+    hideElement(targetElement, settings.generalSettings.hideType);
     targetElement = null;
     return { hiddenCount: hiddenElements.length };
   }
@@ -83,17 +83,17 @@ function getDefaultSettings() {
 }
 
 // Hide element based on settings
-function hideElement(element, settings) {
+function hideElement(element, hideType) {
   const originalState = {
     element: element,
     originalDisplay: element.style.display || '',
     originalVisibility: element.style.visibility || '',
-    hideType: settings.generalSettings.hideType
+    hideType: hideType
   };
 
   hiddenElements.push(originalState);
 
-  switch (settings.generalSettings.hideType) {
+  switch (hideType) {
     case 'hide':
       element.style.display = 'none';
       break;
@@ -168,3 +168,78 @@ function highlightElement(element, settings) {
     }
   }, 0);
 }
+
+// Apply auto-hide rules for the current page
+async function applyAutoHideRules() {
+  const settings = await loadSettings();
+  const currentUrl = window.location.href;
+
+  if (!settings.siteSettings || !settings.siteSettings.length) {
+    return;
+  }
+
+  for (const site of settings.siteSettings) {
+    if (matchesUrlPattern(site.url, currentUrl) && site.selectors.length > 0) {
+
+      const hideType = site.hideType === 'default' ?
+        settings.generalSettings.hideType : site.hideType;
+
+      for (const selector of site.selectors) {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(element => {
+            hideElement(element, hideType);
+          });
+        } catch (e) {
+          console.error('Error applying selector:', selector, e);
+        }
+      }
+    }
+  }
+}
+
+// For sites that load content dynamically, set up a MutationObserver
+let autoHideObserver;
+async function setupMutationObserver() {
+  const settings = await loadSettings();
+  const currentUrl = window.location.href;
+
+  const hasMatchingSite = settings.siteSettings.some(site =>
+    matchesUrlPattern(site.url, currentUrl) && site.selectors.length > 0
+  );
+
+  if (hasMatchingSite) {
+    if (autoHideObserver) {
+      autoHideObserver.disconnect();
+    }
+
+    autoHideObserver = new MutationObserver((mutations) => {
+      applyAutoHideRules();
+    });
+
+    autoHideObserver.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+}
+
+// Сheck if current URL matches a site pattern
+function matchesUrlPattern(pattern, url) {
+  try {
+    const regex = new RegExp(pattern);
+    return regex.test(url);
+  } catch (e) {
+    console.error('Invalid regex pattern:', pattern, e);
+    return false;
+  }
+}
+
+// Initialize auto-hide rules when the page loads
+document.addEventListener('DOMContentLoaded', applyAutoHideRules);
+
+// For dynamic content, also run the rules when the page is fully loaded
+window.addEventListener('load', applyAutoHideRules);
+
+// Setup the observer after the page has loaded
+window.addEventListener('load', setupMutationObserver);
