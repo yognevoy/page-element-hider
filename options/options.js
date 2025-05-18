@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const defaultSettings = {
         generalSettings: {
             hideType: 'hide',
-            showBorder: true,
-            borderColor: '#ff0000',
+            showBorder: false,
+            borderColor: '#000000',
             borderStyle: 'solid',
             borderWidth: 1
         },
