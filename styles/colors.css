@@ -1,0 +1,16 @@
+:root {
+    --bg-dark: #2a2a2a;
+    --bg-medium: #3a3a3a;
+    --bg-light: #484848;
+    --accent-primary: #8a56e8;
+    --accent-hover: #9e73f3;
+    --text-color: #ffffff;
+    --text-secondary: #e0e0e0;
+    --icon-color: #b0b0b0;
+    --icon-hover: #ffffff;
+    --border-color: #555555;
+    --danger-color: #e53935;
+    --danger-hover: #f44336;
+    --success-color: #43a047;
+    --success-hover: #4caf50;
+}
