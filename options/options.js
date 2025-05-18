@@ -1,4 +1,3 @@
-// options.js
 document.addEventListener('DOMContentLoaded', function () {
     // DOM Elements
     const hideTypeSelect = document.getElementById('hideType');
@@ -36,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Close buttons for modals
     const closeButtons = document.querySelectorAll('.close-modal');
 
-    // Default settings
     const defaultSettings = {
         generalSettings: {
             hideType: 'hide',
@@ -48,10 +46,8 @@ document.addEventListener('DOMContentLoaded', function () {
         siteSettings: []
     };
 
-    // Current settings
     let currentSettings = {};
 
-    // Current state variables
     let currentSiteIndex = -1;
     let currentSelectors = [];
     let currentSelectorIndex = -1;
@@ -89,17 +85,14 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateUI() {
         const { generalSettings } = currentSettings;
 
-        // Update general settings UI
         hideTypeSelect.value = generalSettings.hideType;
         showBorderCheckbox.checked = generalSettings.showBorder;
         borderColorInput.value = generalSettings.borderColor;
         borderStyleSelect.value = generalSettings.borderStyle;
         borderWidthInput.value = generalSettings.borderWidth;
 
-        // Show/hide border settings based on checkbox
         borderSettingsDiv.style.display = generalSettings.showBorder ? 'block' : 'none';
 
-        // Update site list
         updateSiteList();
     }
 
@@ -229,13 +222,11 @@ document.addEventListener('DOMContentLoaded', function () {
         currentSiteIndex = siteIndex;
 
         if (siteIndex === -1) {
-            // Adding a new site
             modalTitle.textContent = 'Add Site';
             siteUrlInput.value = '';
             siteHideTypeSelect.value = 'default';
             currentSelectors = [];
         } else {
-            // Editing existing site
             const site = currentSettings.siteSettings[siteIndex];
             modalTitle.textContent = 'Edit Site';
             siteUrlInput.value = site.url;
@@ -252,11 +243,9 @@ document.addEventListener('DOMContentLoaded', function () {
         currentSelectorIndex = selectorIndex;
 
         if (selectorIndex === -1) {
-            // Adding a new selector
             selectorModalTitle.textContent = 'Add Selector';
             selectorValueInput.value = '';
         } else {
-            // Editing existing selector
             selectorModalTitle.textContent = 'Edit Selector';
             selectorValueInput.value = currentSelectors[selectorIndex];
         }
@@ -362,10 +351,8 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         if (currentSiteIndex === -1) {
-            // Add new site
             currentSettings.siteSettings.push(siteData);
         } else {
-            // Update existing site
             currentSettings.siteSettings[currentSiteIndex] = siteData;
         }
 
@@ -389,10 +376,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (currentSelectorIndex === -1) {
-            // Add new selector
             currentSelectors.push(selectorValue);
         } else {
-            // Update existing selector
             currentSelectors[currentSelectorIndex] = selectorValue;
         }
 
@@ -439,6 +424,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Initialize
     loadSettings();
 });
