@@ -5,6 +5,11 @@
   "description": "Hide unwanted elements from webpages for a cleaner browsing experience",
   "homepage_url": "https://github.com/yognevoy/page-element-hider",
 
+  "icons": {
+    "48": "icons/ext-icon-48.svg",
+    "96": "icons/ext-icon-96.svg"
+  },
+
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
