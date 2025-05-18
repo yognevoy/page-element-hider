@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Page Element Hider",
+  "version": "1.0",
+  "description": "Hide unwanted elements from webpages for a cleaner browsing experience",
+  "homepage_url": "https://github.com/yognevoy/page-element-hider",
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_scripts/page-element-hider.js"]
+    }
+  ]
+}
