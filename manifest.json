@@ -6,8 +6,8 @@
   "homepage_url": "https://github.com/yognevoy/page-element-hider",
 
   "icons": {
-    "48": "icons/ext-icon-48.svg",
-    "96": "icons/ext-icon-96.svg"
+    "48": "icons/icon-48.svg",
+    "96": "icons/icon-96.svg"
   },
 
   "permissions": [
@@ -22,11 +22,23 @@
 
 "action": {
   "default_icon": {
-    "48": "icons/ext-icon-48.svg",
-    "96": "icons/ext-icon-96.svg"
+    "48": "icons/icon-48.svg",
+    "96": "icons/icon-96.svg"
   },
   "default_title": "Page Element Hider",
-  "default_popup": "popup/popup.html"
+  "default_popup": "popup/popup.html",
+  "theme_icons": [
+    {
+      "light": "icons/icon-light-48.svg",
+      "dark": "icons/icon-48.svg",
+      "size": 48
+    },
+    {
+      "light": "icons/icon-light-96.svg",
+      "dark": "icons/icon-96.svg",
+      "size": 96
+    }
+  ]
 },
 
   "content_scripts": [
