@@ -51,16 +51,7 @@ async function loadSettings() {
     if (result.pageElementHiderSettings) {
       return result.pageElementHiderSettings;
     } else {
-      return {
-        generalSettings: {
-          hideType: 'hide',
-          showBorder: true,
-          borderColor: '#ff0000',
-          borderStyle: 'solid',
-          borderWidth: 1
-        },
-        siteSettings: []
-      };
+      return getDefaultSettings();
     }
   } catch (error) {
     console.error('Error loading settings:', error);
