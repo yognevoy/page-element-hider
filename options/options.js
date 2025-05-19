@@ -53,6 +53,28 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentSelectorIndex = -1;
     let confirmCallback = null;
 
+    setAutoHide();
+
+    // Add new site to auto hide.
+    function setAutoHide() {
+        browser.storage.local.get('autoHideUrl').then(result => {
+        if (result.autoHideUrl) {
+            setTimeout(() => {
+                openSiteModal();
+                siteUrlInput.value = result.autoHideUrl;
+                browser.storage.local.remove('autoHideUrl');
+            }, 100);
+        }
+    });
+    }
+
+    // Listen for new auto hide url value.
+    browser.storage.onChanged.addListener((changes, area) => {
+        if (area === 'local' && changes.autoHideUrl && changes.autoHideUrl.newValue) {
+            setAutoHide()
+        }
+    });
+
     // Load settings
     function loadSettings() {
         browser.storage.local.get('pageElementHiderSettings')
