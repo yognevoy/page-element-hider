@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Element Hider - Help</title>
+    <link rel="stylesheet" href="help.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Page Element Hider Help</h1>
+        </header>
+
+        <div class="help-card">
+            <div class="table-of-contents">
+                <h3>Contents</h3>
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#basic-usage">Basic Usage</a></li>
+                    <li><a href="#hide-types">Understanding Hide Types</a></li>
+                    <li><a href="#auto-hide">Setting Up Auto-Hide Rules</a></li>
+                    <li><a href="#settings">Customizing Settings</a></li>
+                    <li><a href="#troubleshooting">Troubleshooting</a></li>
+                    <li><a href="#faq">Frequently Asked Questions</a></li>
+                </ul>
+            </div>
+
+            <section id="overview">
+                <h2>Overview</h2>
+                <p>Page Element Hider is a Firefox extension that allows you to selectively hide unwanted elements on
+                    webpages, creating a cleaner and more focused browsing experience. With this tool, you can:</p>
+                <ul>
+                    <li>Hide distracting elements with a simple right-click</li>
+                    <li>Set up automatic hiding rules for specific websites</li>
+                    <li>Choose different methods for hiding elements based on your needs</li>
+                    <li>Customize how elements are selected and displayed</li>
+                </ul>
+            </section>
+
+            <section id="basic-usage">
+                <h2>Basic Usage</h2>
+
+                <h3>Hiding Elements</h3>
+                <ol>
+                    <li>Navigate to any webpage</li>
+                    <li>Right-click on the element you want to hide</li>
+                    <li>Select "Hide Element" from the context menu</li>
+                    <li>The element will be hidden according to your settings</li>
+                </ol>
+
+                <div class="note">
+                    <p>If you have "Show element border on selection" enabled in the settings, elements will be
+                        highlighted when you right-click on them, making it easier to identify what you're about to
+                        hide.</p>
+                </div>
+
+                <h3>Restoring Hidden Elements</h3>
+                <p>To temporarily restore all hidden elements on the current page:</p>
+                <ol>
+                    <li>Click on the Page Element Hider icon in your browser toolbar</li>
+                    <li>Select "Show all" in the popup</li>
+                </ol>
+                <p>This will restore all hidden elements for your current browsing session. If you refresh the page, any
+                    auto-hide rules will be applied again.</p>
+            </section>
+
+            <section id="hide-types">
+                <h2>Understanding Hide Types</h2>
+                <p>Page Element Hider offers three different methods for hiding elements, each with its own use cases:
+                </p>
+
+                <h3>Hide Completely</h3>
+                <p>This option uses <code>display: none</code> to completely remove the element from the page layout.
+                    The space occupied by the element will collapse, and other elements will adjust to fill the space.
+                </p>
+                <p>Best for: Removing advertisements, sidebars, or other elements when you want to reclaim the space
+                    they occupy.</p>
+
+                <h3>Hide (Conceal)</h3>
+                <p>This option uses <code>visibility: hidden</code> to make the element invisible while preserving its
+                    space in the layout. The element will be invisible, but the space it occupies will remain empty.</p>
+                <p>Best for: Hiding elements when you want to maintain the overall page layout without disruption.</p>
+
+                <h3>Remove</h3>
+                <p>This option actually removes the element from the DOM. This is the most thorough method but can
+                    potentially break page functionality if the hidden element is referenced by scripts.</p>
+                <p>Best for: Completely eliminating elements that might be tracking you or running unwanted scripts.</p>
+
+                <div class="warning">
+                    <p>Use the "Remove" option with caution, as it can sometimes break website functionality if the
+                        removed element contains important scripts or is referenced by other parts of the page.</p>
+                </div>
+            </section>
+
+            <section id="auto-hide">
+                <h2>Setting Up Auto-Hide Rules</h2>
+                <p>Auto-hide rules let you automatically hide specific elements whenever you visit a particular website.
+                </p>
+
+                <h3>Creating Auto-Hide Rules</h3>
+                <ol>
+                    <li>Visit the website where you want to set up auto-hide rules</li>
+                    <li>Click on the Page Element Hider icon in your browser toolbar</li>
+                    <li>Select "Set auto hide"</li>
+                    <li>In the settings page that opens, you can:
+                        <ul>
+                            <li>Verify the site URL is correct</li>
+                            <li>Choose a hide type for this site (or use your default setting)</li>
+                            <li>Add CSS selectors for elements you want to hide</li>
+                        </ul>
+                    </li>
+                    <li>Click "Save" to apply your rules</li>
+                </ol>
+
+                <h3>Adding CSS Selectors</h3>
+                <p>CSS selectors tell the extension which elements to hide. You can use:</p>
+                <ul>
+                    <li><code>#id</code> - To target an element with a specific ID</li>
+                    <li><code>.class</code> - To target elements with a specific class</li>
+                    <li><code>tag</code> - To target all elements of a specific HTML tag</li>
+                    <li>More complex selectors like <code>.class1 .class2</code> or <code>div > p</code></li>
+                </ul>
+
+                <div class="note">
+                    <p>If you're not familiar with CSS selectors, you can use browser developer tools to find the right
+                        selector. Right-click on an element, select "Inspect" or "Inspect Element", and look for the ID
+                        or class attributes in the highlighted HTML.</p>
+                </div>
+
+                <h3>Managing Auto-Hide Rules</h3>
+                <p>To manage your existing auto-hide rules:</p>
+                <ol>
+                    <li>Click on the Page Element Hider icon</li>
+                    <li>Select "Options"</li>
+                    <li>Scroll down to the "Auto-Hide Settings" section</li>
+                    <li>Here you can edit or delete existing rules</li>
+                </ol>
+            </section>
+
+            <section id="settings">
+                <h2>Customizing Settings</h2>
+
+                <h3>General Settings</h3>
+                <ul>
+                    <li><strong>Hide Type:</strong> Set the default method for hiding elements (Hide completely,
+                        Hide/conceal, or Remove)</li>
+                    <li><strong>Show element border on selection:</strong> When enabled, displays a border around
+                        elements when you right-click on them</li>
+                    <li><strong>Border settings:</strong> Customize the color, style, and width of the selection border
+                    </li>
+                </ul>
+
+                <h3>Accessing Settings</h3>
+                <p>To access the settings page:</p>
+                <ol>
+                    <li>Click on the Page Element Hider icon in your browser toolbar</li>
+                    <li>Select "Options"</li>
+                </ol>
+                <p>Alternatively, you can access the settings from Firefox's Add-ons Manager:</p>
+                <ol>
+                    <li>Click the menu button and select "Add-ons and themes"</li>
+                    <li>Find "Page Element Hider" in your extensions list</li>
+                    <li>Click the three dots (⋯) and select "Options"</li>
+                </ol>
+            </section>
+
+            <section id="troubleshooting">
+                <h2>Troubleshooting</h2>
+
+                <h3>Elements Won't Stay Hidden</h3>
+                <p>If elements you've hidden keep reappearing:</p>
+                <ul>
+                    <li>The website might be dynamic and regenerate elements after loading</li>
+                    <li>Try using a more specific CSS selector in the auto-hide rules</li>
+                    <li>Consider using the "Remove" hide type for more persistent elements</li>
+                </ul>
+
+                <h3>Website Functionality Breaks</h3>
+                <p>If a website stops working correctly after hiding elements:</p>
+                <ul>
+                    <li>Click the extension icon and select "Show all" to restore hidden elements</li>
+                    <li>Try using "Hide (conceal)" instead of "Remove" for that particular site</li>
+                    <li>Be more selective about which elements you hide - avoid hiding navigation menus or interactive
+                        elements</li>
+                </ul>
+
+                <h3>Extension Not Working</h3>
+                <p>If the extension seems to stop working entirely:</p>
+                <ul>
+                    <li>Make sure the extension is enabled in your Firefox Add-ons Manager</li>
+                    <li>Try restarting Firefox</li>
+                    <li>If problems persist, try resetting all settings (in Options page) or reinstalling the extension
+                    </li>
+                </ul>
+            </section>
+
+            <section id="faq">
+                <h2>Frequently Asked Questions</h2>
+
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">Will my hidden elements stay hidden when I close and reopen Firefox?
+                        </div>
+                        <div class="faq-answer">
+                            <p>Elements that are hidden using auto-hide rules will remain hidden when you reopen
+                                Firefox. Elements that were hidden manually with right-click will only stay hidden until
+                                you close the tab or refresh the page, unless you set up an auto-hide rule for them.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">Can I export my settings to another computer?</div>
+                        <div class="faq-answer">
+                            <p>Currently, there's no built-in export/import feature. Your settings are stored in
+                                Firefox's local storage for the extension.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">Does this extension work on all websites?</div>
+                        <div class="faq-answer">
+                            <p>Page Element Hider works on most websites, but some sites with complex structures or
+                                heavy JavaScript might behave unexpectedly. Sites with strict Content Security Policies
+                                might also limit some functionality.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">Will hiding elements speed up page loading?</div>
+                        <div class="faq-answer">
+                            <p>Using "Hide completely" or "Hide (conceal)" won't significantly impact page loading as
+                                the elements are still downloaded. Using "Remove" might provide some performance benefit
+                                if you're removing large elements or elements that run resource-intensive scripts.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="help.js"></script>
+</body>
+
+</html>
