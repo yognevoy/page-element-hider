@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Page Element Hider",
   "version": "1.0",
   "description": "Hide unwanted elements from webpages for a cleaner browsing experience",
@@ -20,11 +20,14 @@
     "scripts": ["background.js"]
   },
 
-  "browser_action": {
-    "default_icon": "icons/ext-icon-48.svg",
-    "default_title": "Beastify",
-    "default_popup": "popup/popup.html"
+"action": {
+  "default_icon": {
+    "48": "icons/ext-icon-48.svg",
+    "96": "icons/ext-icon-96.svg"
   },
+  "default_title": "Page Element Hider",
+  "default_popup": "popup/popup.html"
+},
 
   "content_scripts": [
     {
