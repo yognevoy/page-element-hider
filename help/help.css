@@ -32,6 +32,7 @@
     margin-bottom: 12px;
  }
 
+ /* Help card styles */
  .help-card {
      background-color: var(--bg-medium);
      border-radius: var(--border-radius);
@@ -105,22 +106,7 @@
      border: 1px solid var(--border-color);
  }
 
- .back-button {
-     display: inline-block;
-     margin-top: 20px;
-     padding: 10px 16px;
-     background-color: var(--accent-primary);
-     color: white;
-     border-radius: var(--border-radius);
-     text-decoration: none;
-     font-weight: 500;
-     transition: background-color 0.2s;
- }
-
- .back-button:hover {
-     background-color: var(--accent-hover);
- }
-
+ /* Table of contents styles */
  .table-of-contents {
      background-color: var(--bg-dark);
      padding: 16px;
@@ -152,24 +138,7 @@
      color: var(--accent-primary);
  }
 
- .image-container {
-     text-align: center;
-     margin: 20px 0;
- }
-
- .image-container img {
-     max-width: 80%;
-     border: 1px solid var(--border-color);
-     border-radius: var(--border-radius);
- }
-
- .image-caption {
-     font-style: italic;
-     color: var(--text-secondary);
-     margin-top: 8px;
-     font-size: 14px;
- }
-
+ /* FAQ styles */
  .faq-question {
     background-color: var(--bg-dark);
     padding: 12px 16px;
