@@ -12,13 +12,12 @@
     padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
 }
 
 .logo h1 {
     font-size: 18px;
     text-align: center;
-    margin-bottom: 8px;
     color: var(--accent-primary);
 }
 
