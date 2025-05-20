@@ -5,6 +5,12 @@
   "description": "Hide unwanted elements from webpages for a cleaner browsing experience",
   "homepage_url": "https://github.com/yognevoy/page-element-hider",
 
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "pageelementhider@gmail.com"
+    }
+  },
+
   "icons": {
     "48": "icons/icon-48.svg",
     "96": "icons/icon-96.svg"
